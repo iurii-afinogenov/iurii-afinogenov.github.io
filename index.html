@@ -5,270 +5,246 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iurii Afinogenov — Technology Architect &amp; Systems Coordinator</title>
 <meta name="description" content="Iurii Afinogenov — IT infrastructure, network security, international business &amp; compliance. Phnom Penh, Cambodia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EEF1F3;
-    --paper-alt:#E4E9EC;
-    --ink:#16324F;
-    --ink-soft:#4A6178;
-    --line:#C7D3DA;
-    --line-strong:#9FB2BE;
-    --accent:#C97A2B;
-    --accent-soft:#E8C9A6;
-    --active:#3D7A6C;
-    --display: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
-    --body: 'IBM Plex Sans', -apple-system, sans-serif;
-    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --bg:#0D1B2A;
+    --bg-raised:#122238;
+    --bg-raised-2:#0F2033;
+    --ink:#EFF4F8;
+    --ink-soft:#9FB4C7;
+    --ink-faint:#6E869B;
+    --line: rgba(239,244,248,.10);
+    --line-strong: rgba(239,244,248,.22);
+    --amber:#E8A33D;
+    --cyan:#5FD3C4;
+    --coral:#FF7A59;
+    --violet:#9C8CF2;
+    --green:#41C285;
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--paper);
+    background:
+      radial-gradient(1100px 520px at 12% -8%, rgba(232,163,61,.10), transparent 60%),
+      radial-gradient(900px 480px at 92% 6%, rgba(95,211,196,.09), transparent 55%),
+      var(--bg);
     color:var(--ink);
     font-family:var(--body);
     font-size:16px;
-    line-height:1.55;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
 
-  a{color:var(--ink);}
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--accent);
-    outline-offset:3px;
-  }
+  a{color:var(--cyan); text-decoration:none;}
+  a:hover{color:var(--amber);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
 
-  .wrap{max-width:820px; margin:0 auto; padding:0 28px;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 28px;}
 
-  /* ---------- HEADER / SIGNATURE ROUTE MAP ---------- */
+  /* ---------- HEADER ---------- */
   header.hero{
-    padding:56px 0 40px;
+    padding:64px 0 44px;
     border-bottom:1px solid var(--line);
+    position:relative;
   }
-  .route{
-    width:100%;
-    height:auto;
-    margin-bottom:36px;
-  }
-  .route text{
-    font-family:var(--mono);
-    font-size:11px;
-    fill:var(--ink-soft);
-    letter-spacing:.04em;
-  }
-  .route .node-label{fill:var(--ink); font-weight:600;}
-  .route .trace{
-    fill:none;
-    stroke:var(--line-strong);
-    stroke-width:1.4;
-    stroke-dasharray:3 4;
-  }
-  .route .node{
-    fill:var(--paper);
-    stroke:var(--ink-soft);
-    stroke-width:1.4;
-  }
-  .route .node.active{
-    fill:var(--accent);
-    stroke:var(--accent);
-  }
-
   .eyebrow{
     font-family:var(--mono);
     font-size:12px;
-    letter-spacing:.14em;
+    letter-spacing:.16em;
     text-transform:uppercase;
-    color:var(--accent);
-    margin:0 0 10px;
+    color:var(--amber);
+    margin:0 0 14px;
+    display:flex; align-items:center; gap:10px;
   }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--amber);}
   h1{
     font-family:var(--display);
-    font-size:clamp(34px, 6vw, 52px);
+    font-size:clamp(38px, 6.4vw, 58px);
     line-height:1.02;
-    letter-spacing:-.01em;
+    letter-spacing:-.015em;
     margin:0 0 14px;
-    font-weight:700;
+    font-weight:600;
+    background:linear-gradient(100deg, var(--ink) 40%, var(--cyan) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
   .role-line{
     font-family:var(--body);
-    font-size:17px;
+    font-size:17.5px;
     color:var(--ink-soft);
-    max-width:56ch;
-    margin:0 0 26px;
+    max-width:58ch;
+    margin:0 0 34px;
   }
-  .contact-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 18px;
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--ink-soft);
-    align-items:center;
-  }
-  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line-strong);}
-  .contact-row a:hover{border-color:var(--accent); color:var(--accent);}
-  .sep{color:var(--line-strong);}
 
-  .cta-row{margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;}
-  .btn{
+  /* Route map */
+  .route-panel{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 22px 16px;
+    margin-bottom:34px;
+  }
+  .route{width:100%; height:auto; display:block;}
+  .route-cap{
     font-family:var(--mono);
-    font-size:13px;
-    letter-spacing:.03em;
-    text-decoration:none;
-    padding:11px 18px;
-    border-radius:2px;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
+    font-size:11px;
+    color:var(--ink-faint);
+    letter-spacing:.06em;
+    margin:0 0 6px;
+    text-transform:uppercase;
   }
-  .btn-primary{
-    background:var(--ink);
-    color:var(--paper);
-    border:1px solid var(--ink);
+  .route text{font-family:var(--mono); font-size:11.5px; fill:var(--ink-soft);}
+  .route .node-label{fill:var(--ink); font-weight:600; font-family:var(--body); font-size:13px;}
+  .route .trace{fill:none; stroke:var(--line-strong); stroke-width:1.6; stroke-dasharray:4 4;}
+  .route .trace-branch{fill:none; stroke:var(--cyan); stroke-width:1.4; stroke-dasharray:2 4; opacity:.7;}
+  .route .node{fill:var(--bg-raised); stroke:var(--ink-faint); stroke-width:1.6;}
+  .route .node.active{fill:var(--amber); stroke:var(--amber);}
+  .route .node.branch{fill:var(--bg-raised); stroke:var(--cyan); stroke-width:1.6;}
+  .route .yr{fill:var(--cyan); font-family:var(--mono); font-size:10.5px;}
+
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:9px 16px;
+    font-family:var(--mono); font-size:13px; color:var(--ink-soft);
+    align-items:center; margin-bottom:8px;
   }
-  .btn-primary:hover{background:var(--accent); border-color:var(--accent);}
-  .btn-ghost{
-    background:transparent;
-    color:var(--ink);
-    border:1px solid var(--line-strong);
+  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line-strong); color:var(--ink);}
+  .contact-row a:hover{border-color:var(--amber); color:var(--amber);}
+  .sep{color:var(--ink-faint);}
+
+  .alt-links{font-family:var(--mono); font-size:12px; color:var(--ink-faint); margin:0 0 28px;}
+  .alt-links a{color:var(--ink-faint); border-bottom:1px dotted var(--line-strong);}
+  .alt-links a:hover{color:var(--cyan);}
+
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:.02em;
+    text-decoration:none; padding:12px 20px; border-radius:6px;
+    display:inline-flex; align-items:center; gap:8px; transition:all .15s ease;
   }
-  .btn-ghost:hover{border-color:var(--ink);}
+  .btn-primary{background:var(--amber); color:#1A1300; border:1px solid var(--amber); font-weight:600;}
+  .btn-primary:hover{background:#F5B95C; transform:translateY(-1px);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line-strong);}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
 
   /* ---------- SECTIONS ---------- */
-  section{padding:44px 0; border-bottom:1px solid var(--line);}
+  section{padding:48px 0; border-bottom:1px solid var(--line);}
   section:last-of-type{border-bottom:none;}
 
-  .sec-head{
-    display:flex;
-    align-items:baseline;
-    gap:14px;
-    margin-bottom:22px;
-  }
-  .sec-num{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--accent);
-  }
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:24px;}
+  .sec-head::before{content:''; width:3px; height:22px; background:var(--amber); border-radius:2px; align-self:center;}
   h2{
-    font-family:var(--display);
-    font-size:22px;
-    letter-spacing:-.01em;
-    margin:0;
-    font-weight:700;
+    font-family:var(--display); font-size:24px; letter-spacing:-.01em;
+    margin:0; font-weight:600; color:var(--ink);
   }
 
   p{margin:0 0 14px; max-width:68ch; color:var(--ink);}
   p.lead{color:var(--ink-soft);}
 
-  /* Skills spec sheet */
-  .spec{
-    display:grid;
-    grid-template-columns:200px 1fr;
-    gap:0;
-    border-top:1px solid var(--line);
+  /* Skills grid */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .skill-card{
+    background:var(--bg-raised); border:1px solid var(--line);
+    border-left:3px solid var(--cat-color, var(--cyan));
+    border-radius:8px; padding:16px 18px;
   }
-  .spec dt, .spec dd{
-    margin:0;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-    font-size:14.5px;
+  .skill-tag{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--cat-color, var(--cyan)); margin-bottom:6px;
   }
-  .spec dt{
-    font-family:var(--mono);
-    color:var(--ink-soft);
-    font-size:12.5px;
-    letter-spacing:.03em;
-    padding-right:16px;
-  }
-  .spec dd{color:var(--ink);}
+  .skill-card h4{margin:0 0 6px; font-size:14.5px; font-family:var(--body); font-weight:600; color:var(--ink);}
+  .skill-card p{margin:0; font-size:13.5px; color:var(--ink-soft); max-width:none;}
 
-  /* Experience log */
+  /* Legend */
+  .legend{display:flex; flex-wrap:wrap; gap:14px 20px; margin-bottom:26px; font-family:var(--mono); font-size:12px; color:var(--ink-soft);}
+  .legend-item{display:flex; align-items:center; gap:7px;}
+  .legend-dot{width:8px; height:8px; border-radius:50%; background:var(--cat-color); display:inline-block;}
+
+  /* Experience / Education log */
   .job{
-    padding:22px 0;
-    border-top:1px solid var(--line);
-    display:grid;
-    grid-template-columns:150px 1fr;
-    gap:18px;
+    padding:22px 0; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:172px 1fr; gap:20px;
   }
   .job:first-of-type{border-top:none;}
-  .job-meta{font-family:var(--mono); font-size:12px; color:var(--ink-soft); padding-top:3px;}
-  .status-dot{
-    display:inline-block;
-    width:7px; height:7px;
-    border-radius:50%;
-    background:var(--line-strong);
-    margin-right:7px;
-    position:relative; top:-1px;
+  .job-meta{padding-top:3px; display:flex; flex-direction:column; gap:6px;}
+  .job-date{font-family:var(--mono); font-size:12px; color:var(--ink-soft); display:flex; align-items:center;}
+  .job-cat{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--cat-color, var(--cyan));
   }
-  .status-dot.active{background:var(--active); box-shadow:0 0 0 3px rgba(61,122,108,.18);}
-  .job h3{
-    font-family:var(--body);
-    font-weight:700;
-    font-size:16.5px;
-    margin:0 0 4px;
-    color:var(--ink);
+  .dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:var(--ink-faint); margin-right:8px; position:relative; top:0;
   }
-  .job-org{color:var(--ink-soft); font-size:14.5px; margin:0 0 10px;}
+  .dot-current{background:var(--green); box-shadow:0 0 0 3px rgba(65,194,133,.20);}
+  .job h3{font-family:var(--body); font-weight:700; font-size:16.5px; margin:0 0 4px; color:var(--ink);}
+  .job-org{color:var(--ink-soft); font-size:14px; margin:0 0 10px;}
   .job ul{margin:0; padding-left:18px;}
-  .job li{margin-bottom:6px; font-size:14.5px; color:var(--ink);}
-  .job li::marker{color:var(--accent);}
+  .job li{margin-bottom:6px; font-size:14px; color:var(--ink); opacity:.92;}
+  .job li::marker{color:var(--cat-color, var(--amber));}
 
   @media (max-width:640px){
-    .job{grid-template-columns:1fr; gap:6px;}
-    .spec{grid-template-columns:1fr;}
-    .spec dt{padding-bottom:2px; border-bottom:none;}
-    .spec dd{padding-top:0;}
+    .job{grid-template-columns:1fr; gap:8px;}
+    .skills-grid{grid-template-columns:1fr;}
+    header.hero{padding:48px 0 36px;}
   }
 
-  footer{
-    padding:44px 0 60px;
-    font-family:var(--mono);
-    font-size:12.5px;
-    color:var(--ink-soft);
-  }
+  footer{padding:44px 0 60px; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);}
   footer .contact-row{margin-bottom:14px;}
+  footer .alt-links{margin-bottom:18px;}
 
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <header class="hero">
-    <svg class="route" viewBox="0 0 760 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Career route: Vladivostok, Seoul, Bangkok, Phnom Penh, with branches to Hong Kong and Delaware">
-      <path class="trace" d="M40,45 L720,45"/>
-      <path class="trace" d="M420,45 L470,18"/>
-      <path class="trace" d="M560,45 L610,72"/>
-
-      <circle class="node" cx="40" cy="45" r="5"/>
-      <text x="40" y="66" text-anchor="middle">RU</text>
-      <text class="node-label" x="40" y="30" text-anchor="middle">Vladivostok</text>
-
-      <circle class="node" cx="230" cy="45" r="5"/>
-      <text x="230" y="66" text-anchor="middle">KR</text>
-      <text class="node-label" x="230" y="30" text-anchor="middle">Seoul</text>
-
-      <circle class="node" cx="420" cy="45" r="5"/>
-      <text x="420" y="66" text-anchor="middle">TH</text>
-      <text class="node-label" x="420" y="30" text-anchor="middle">Bangkok</text>
-
-      <circle class="node active" cx="610" cy="45" r="6"/>
-      <text x="610" y="66" text-anchor="middle">KH</text>
-      <text class="node-label" x="610" y="30" text-anchor="middle">Phnom Penh</text>
-
-      <circle class="node" cx="470" cy="18" r="4"/>
-      <text x="500" y="21" text-anchor="start">HK — Ensis Ltd.</text>
-
-      <circle class="node" cx="610" cy="72" r="4"/>
-      <text x="610" y="88" text-anchor="middle">US-DE — Dzambala LLC</text>
-    </svg>
-
     <p class="eyebrow">Technology Architect / Systems Coordinator</p>
     <h1>Iurii Afinogenov</h1>
-    <p class="role-line">IT infrastructure, network security, development &amp; automation, international business and compliance — 20+ years across Russia, Southeast Asia, Hong Kong and the US.</p>
+    <p class="role-line">IT infrastructure, network security, development &amp; automation, international business and compliance — 20+ years, entities founded and run across Russia, Cambodia, Hong Kong and the US.</p>
+
+    <div class="route-panel">
+      <p class="route-cap">Career &amp; entity map</p>
+      <svg class="route" viewBox="0 0 880 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Route from Vladivostok, Russia through Seoul to Sihanoukville then Phnom Penh, Cambodia; Ensis Limited (Hong Kong) founded en route to Phnom Penh in 2019; Dzambala LLC (Delaware) founded 2021 after settling in Phnom Penh; Nikson LLC founded in Vladivostok in the final year before departure">
+        <path class="trace" d="M60,60 L560,60"/>
+        <path class="trace-branch" d="M480,60 C 495,60 500,32 495,24"/>
+        <path class="trace-branch" d="M560,60 C 610,60 615,92 650,100"/>
+
+        <circle class="node" cx="75" cy="60" r="5"/>
+        <text x="75" y="82" text-anchor="middle">RU</text>
+        <text class="node-label" x="75" y="44" text-anchor="middle">Vladivostok</text>
+        <text class="yr" x="75" y="98" text-anchor="middle">Nikson · 2014–15</text>
+
+        <circle class="node" cx="230" cy="60" r="5"/>
+        <text x="230" y="82" text-anchor="middle">KR</text>
+        <text class="node-label" x="230" y="44" text-anchor="middle">Seoul</text>
+
+        <circle class="node" cx="400" cy="60" r="5"/>
+        <text x="400" y="82" text-anchor="middle">KH</text>
+        <text class="node-label" x="400" y="44" text-anchor="middle">Sihanoukville</text>
+
+        <circle class="node active" cx="560" cy="60" r="6.5"/>
+        <text x="560" y="82" text-anchor="middle">KH</text>
+        <text class="node-label" x="560" y="44" text-anchor="middle">Phnom Penh — current base</text>
+
+        <circle class="node branch" cx="495" cy="24" r="4.5"/>
+        <text class="node-label" x="509" y="21" text-anchor="start">Ensis Limited (Hong Kong)</text>
+        <text class="yr" x="509" y="34" text-anchor="start">founded 2019</text>
+
+        <circle class="node branch" cx="650" cy="100" r="4.5"/>
+        <text class="node-label" x="664" y="97" text-anchor="start">Dzambala LLC (Delaware)</text>
+        <text class="yr" x="664" y="110" text-anchor="start">founded 2021</text>
+      </svg>
+    </div>
 
     <div class="contact-row">
       <span>Phnom Penh, Cambodia</span>
@@ -279,8 +255,9 @@
       <span class="sep">·</span>
       <a href="https://t.me/IuriiAfinogenov">Telegram</a>
       <span class="sep">·</span>
-      <a href="https://linkedin.com/in/iuriiafinogenov">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/iurii-afinogenov">LinkedIn</a>
     </div>
+    <p class="alt-links">Résumé PDF also available via <a href="https://www.dropbox.com/scl/fi/6m06ad5jujdvdi52ax44d/Afinogenov_Resume_EN.pdf?rlkey=htz1h8gumg0ynpxbgm94cha6v&amp;st=gqzbqksy&amp;dl=0">Dropbox</a> and <a href="https://drive.google.com/file/d/1zURILcZL8_yu55X1B4EmlvTY1G2HaK4S/view?usp=sharing">Google Drive</a>.</p>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="Afinogenov_Resume_EN.pdf" download>↓ Download PDF résumé</a>
@@ -290,329 +267,319 @@
 
   <!-- PROFILE -->
   <section id="profile">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Profile</h2></div>
+    <div class="sec-head"><h2>Profile</h2></div>
     <p>20+ years of experience spanning IT infrastructure, network security, web development/automation, and international entrepreneurship. Built and administered corporate networks and server infrastructure, conducted vulnerability audits and implemented data protection (PGP encryption, hardening, access control), developed and maintained web applications (PHP/Laravel, SQL, Python/Selenium), founded and managed companies across multiple jurisdictions (Russia, USA, Cambodia, Hong Kong), and supported international trade and payment transactions.</p>
-    <p class="lead">Preferred role — architect and coordinator rather than a hands-on developer: designs systems and solutions, oversees teams of developers and freelancers, and personally sets up and configures infrastructure.</p>
+    <p class="lead">I'm not just a coder who executes a spec — I design the solution as a whole, from analysis and options through to architecture and infrastructure. Just point me at the goal; you won't need to manage me step by step. I'm equally comfortable building a team from scratch or plugging into one that's already there, I negotiate directly with outside partners and vendors, and I take ownership of the outcome — including the parts I handle with my own hands when it counts — reporting back on progress and results at every stage.</p>
+    <p class="lead">IT is where I gravitate and where I'm strongest — but the same systems-thinking has been called on well outside it, from full power/sound/lighting infrastructure design for a music festival (Kazantip) to hands-on operational builds. The common thread isn't a specific tech stack — it's taking an unfamiliar problem and owning it through to a working result.</p>
   </section>
 
   <!-- SKILLS -->
   <section id="skills">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Skills</h2></div>
-    <dl class="spec">
-      <dt>Infrastructure</dt>
-      <dd>Linux/Windows Server, corporate network design, redundant internet connections, CCTV systems, IP telephony (VoIP/Zadarma)</dd>
-
-      <dt>Security</dt>
-      <dd>PGP encryption, hardening, access control, vulnerability audits, secure server infrastructure, thin clients</dd>
-
-      <dt>Development</dt>
-      <dd>PHP, Laravel, SQL/MySQL, HTML/CSS/jQuery/AJAX/XML, Python (Selenium, AI-augmented via Copilot/Claude), tkinter, 1C integration</dd>
-
-      <dt>Fintech</dt>
-      <dd>Stripe, PayPal, Coinpayments, custom payment aggregators, SWIFT (MT103/MT202/MT799, RMA), crypto payments (ETH/ERC20, TRX/TRC20), OAuth</dd>
-
-      <dt>Compliance</dt>
-      <dd>Company registration &amp; administration (Russia, US/Delaware, Cambodia, Hong Kong), banking compliance, corporate account opening, contract management</dd>
-
-      <dt>Management</dt>
-      <dd>Coordinating teams of up to 50 people, project &amp; contractor management, IT infrastructure for large events</dd>
-
-      <dt>Languages</dt>
-      <dd>Russian (native), English (fluent, IELTS 7.9, 2007)</dd>
-    </dl>
+    <div class="sec-head"><h2>Key Skills</h2></div>
+    <div class="skills-grid">
+      
+      <div class="skill-card" style="--cat-color:#5FD3C4">
+        <div class="skill-tag">Infrastructure</div>
+        <h4>Infrastructure &amp; Networks</h4>
+        <p>Linux/Windows Server, corporate network design, redundant internet connections, CCTV systems, IP telephony (VoIP/Zadarma), Novell (early experience)</p>
+      </div>
+      <div class="skill-card" style="--cat-color:#9C8CF2">
+        <div class="skill-tag">Security</div>
+        <h4>Information Security</h4>
+        <p>PGP encryption &amp; signing, full-disk/system encryption, hardening, access control, vulnerability audits, secure server infrastructure, thin clients. Self-taught offensive-security fundamentals: wireless network security testing (Kali Linux), SQL injection &amp; database resilience testing, QR/Base64-encoded data analysis.</p>
+      </div>
+      <div class="skill-card" style="--cat-color:#41C285">
+        <div class="skill-tag">Dev & Automation</div>
+        <h4>Development &amp; Automation</h4>
+        <p>PHP, Laravel, SQL/MySQL, HTML/CSS/jQuery/AJAX/XML, Python (Selenium, AI-augmented via Copilot/Claude), tkinter, 1C integration</p>
+      </div>
+      <div class="skill-card" style="--cat-color:#FF7A59">
+        <div class="skill-tag">Fintech / Crypto</div>
+        <h4>Payment Systems &amp; Fintech</h4>
+        <p>Stripe, PayPal, Coinpayments, custom payment aggregators, SWIFT (MT103/MT202/MT799, RMA), crypto payments (ETH/ERC20, TRX/TRC20), OAuth</p>
+      </div>
+      <div class="skill-card" style="--cat-color:#E8A33D">
+        <div class="skill-tag">Business & Compliance</div>
+        <h4>International Business &amp; Compliance</h4>
+        <p>Company registration &amp; administration (Russia, US/Delaware, Cambodia, Hong Kong), banking compliance, corporate account opening, contract management</p>
+      </div>
+      <div class="skill-card" style="--cat-color:#E8A33D">
+        <div class="skill-tag">Business & Compliance</div>
+        <h4>Management &amp; Coordination</h4>
+        <p>Coordinating teams of up to 50 people, project &amp; contractor management, IT infrastructure for large events</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:18px; font-family:var(--mono); font-size:13px;">Languages: Russian (native), English (fluent, IELTS 7.9, 2008)</p>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Experience</h2></div>
-
-    <div class="job">
-      <div class="job-meta"><span class="status-dot active"></span>2025 — present</div>
-      <div>
-        <h3>Facebook Marketplace/Groups Automation</h3>
+    <div class="sec-head"><h2>Experience</h2></div>
+    <div class="legend"><span class="legend-item"><span class="legend-dot" style="--cat-color:#5FD3C4"></span>Infrastructure</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#9C8CF2"></span>Security</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#41C285"></span>Dev & Automation</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#FF7A59"></span>Fintech / Crypto</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#E8A33D"></span>Business & Compliance</span></div>
+    
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot dot-current"></span>2025 — Present</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
+        <h3>Facebook Marketplace/Groups Automation Tool Development</h3>
         <p class="job-org">Independent project</p>
-        <ul>
-          <li>Designed and built (with AI tools, Copilot) a Python/Selenium tool for automated listing posts.</li>
-          <li>CSV-driven input, tkinter GUI, browser tab management, automatic multi-photo upload.</li>
-        </ul>
+        <ul><li>Independently designed and built (using AI tools, Copilot) a Python/Selenium script for automated posting of listings to Facebook Marketplace and groups.</li><li>Implemented reading of source data from a pipe-delimited CSV, a tkinter GUI, browser tab management, and automatic multi-photo upload.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta"><span class="status-dot active"></span>2023 — present</div>
-      <div>
-        <h3>Telegram Mini-App Store — YoYo Shop</h3>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot dot-current"></span>2023 — Present</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
+        <h3>Telegram Mini-App Online Store — YoYo Shop</h3>
         <p class="job-org">Cambodia (family project)</p>
-        <ul>
-          <li>Built and maintained a product catalog as a Telegram mini-app; automated order processing.</li>
-          <li>Store has since migrated fully to the Grab Cambodia app.</li>
-        </ul>
+        <ul><li>Developed and maintained a product catalog as a Telegram mini-app; automated order processing.</li><li>The store has since fully migrated to the Grab Cambodia app.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta"><span class="status-dot active"></span>2017 — present</div>
-      <div>
+    <div class="job" style="--cat-color:#E8A33D">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot dot-current"></span>2017 — Present</span>
+        <span class="job-cat">Business & Compliance</span>
+      </div>
+      <div class="job-body">
         <h3>Founder &amp; Director — SKASALE CO., LTD</h3>
         <p class="job-org">Cambodia · episodic/project-based</p>
-        <ul>
-          <li>Founded the company (2017); contracted with Booking.com, Agoda, Expedia.</li>
-          <li>Built banking infrastructure: compared ~15 Cambodian banks; set up SWIFT, Maybank Cambodia, ABA Bank acceptance.</li>
-          <li>2018 — due diligence for a bunker fuel supply project (RMG 380): import scenarios, duties, quality certification.</li>
-          <li>2019 — commission agent on 5 elevator supply projects between Silver Elevator Korea and clients in Russia/Kazakhstan.</li>
-          <li>2020–2021 — official dealer for electronics brand EnnoPro Group Limited in Cambodia, incl. retail deals (e.g. hybrid car batteries to a local auto shop).</li>
-          <li>2021 — repeatedly organized industrial equipment supply deals between overseas suppliers (China) and buyers in Russia/CIS — contracting, logistics, margin control.</li>
-          <li>Studied SWIFT/Wolfsberg standards; corresponded with foreign banks on correspondent relationships (RMA).</li>
-          <li>Registered a Visa Developer Center account (Sandbox, 2019).</li>
-          <li>Built a consulting services package: company registration, VAT/licenses, trademarks, account opening — IT &amp; Compliance Consulting for SE Asia.</li>
-        </ul>
+        <ul><li>Founded the company (2017), VAT registration; negotiated and managed contracts with international booking platforms — Booking.com, Agoda, Expedia.</li><li>Built the company's banking infrastructure: comparative analysis of ~15 Cambodian banks on account-opening terms and POS acquiring; set up international payment acceptance (SWIFT, Maybank Cambodia, ABA Bank).</li><li>2018 — due diligence for a bunker fuel supply project (RMG 380): import scenarios, customs duties, quality certification.</li><li>2019 — commission agent on 5 equipment supply projects (elevators) between Silver Elevator Korea and clients in Russia and Kazakhstan.</li><li>2020–2021 — official dealer/representative for electronics brand EnnoPro Group Limited in Cambodia, including retail deals such as selling hybrid car batteries to a local auto service shop.</li><li>2021 — organized international industrial equipment supply deals between Chinese suppliers and buyers in Russia/CIS — contracting, logistics (FOB/CIF), margin control.</li><li>Studied payment infrastructure standards (SWIFT, Wolfsberg Guidance); corresponded with foreign banks on correspondent banking relationships (RMA).</li><li>Registered a developer account with the Visa Developer Center (Sandbox activated, 2019).</li><li>Built a proprietary IT &amp; Compliance Consulting practice for Southeast Asian businesses — company registration, licensing, market research.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2019 — 2024</div>
-      <div>
+    <div class="job" style="--cat-color:#E8A33D">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>2019 — 2024</span>
+        <span class="job-cat">Business & Compliance</span>
+      </div>
+      <div class="job-body">
         <h3>Founder — Ensis Limited</h3>
         <p class="job-org">Hong Kong · currently inactive</p>
-        <ul>
-          <li>Founded and sole owner (Certificate of Incorporation No. 2812611); sole director and shareholder.</li>
-          <li>Personally opened a corporate account with Bank of China (Hong Kong) — traveled to Hong Kong (~2 weeks) for banking compliance.</li>
-        </ul>
+        <ul><li>Founded and sole owner of the company (Certificate of Incorporation No. 2812611, Hong Kong Companies Registry); sole director and shareholder.</li><li>Personally opened a corporate account with Bank of China (Hong Kong) — traveled to Hong Kong (~2 weeks) to complete banking compliance and sign documents in person.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2020 — 2021</div>
-      <div>
-        <h3>Crypto Platform — Kubera / WinAllGo / Dzambala LLC</h3>
-        <p class="job-org">IT infrastructure &amp; platform development</p>
-        <ul>
-          <li>Infrastructure for a gaming web platform: office, internet infrastructure, ad automation (Facebook Ads, Google Ads).</li>
-          <li>Built and maintained a PHP/Laravel platform on VPS (Linux/cPanel, tested on AWS EC2); GitHub repo management.</li>
-          <li>Integrated PayPal, Stripe, Coinpayments, crypto wallets; custom third-party payment aggregator API (Vietnam/India markets).</li>
-          <li>Telegram bot on a third-party PHP SDK; operational management of a call center (up to 50 people).</li>
-          <li>2021 — founded Dzambala LLC (Delaware, USA) for payment acceptance; separate CentOS 7 + cPanel infrastructure.</li>
-        </ul>
+    <div class="job" style="--cat-color:#FF7A59">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>2020 — 2021</span>
+        <span class="job-cat">Fintech / Crypto</span>
+      </div>
+      <div class="job-body">
+        <h3>IT Infrastructure &amp; Platform Development — Crypto Platform</h3>
+        <p class="job-org">Kubera / WinAllGo / Dzambala LLC</p>
+        <ul><li>Infrastructure support for a crypto gambling platform: office setup, internet infrastructure, ad campaign automation across Facebook Ads, push ads, Google Ads.</li><li>Developed and maintained a PHP/Laravel web platform on VPS (Linux, cPanel on GoDaddy; parallel testing on AWS EC2); maintained the GitHub repository.</li><li>Integrated PayPal, Stripe, Coinpayments, crypto wallets (Metamask/ETH, Tronlink/TRX), plus a custom payment aggregator API for Vietnam/India markets (Zalo, Momo, ViettelPay, Paytm, UPI, Razorpay).</li><li>Developed a Telegram bot on a third-party PHP SDK; operational management of a call center of up to 50 people.</li><li>2021 — founded Dzambala LLC (Delaware, USA) as a legal entity for accepting payments; deployed separate server infrastructure (CentOS 7 + cPanel).</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">~2022 (6 mo)</div>
-      <div>
-        <h3>Libra Mining</h3>
-        <p class="job-org">Crypto project — IT infrastructure</p>
-        <ul>
-          <li>Deployed and supported multiple offices with redundant internet connections for call center continuity.</li>
-          <li>Procured equipment, incl. CCTV; developed the project's coin smart contract on Ethereum.</li>
-          <li>Authored the project's white paper and roadmap.</li>
-        </ul>
+    <div class="job" style="--cat-color:#FF7A59">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>~2022 (6 months)</span>
+        <span class="job-cat">Fintech / Crypto</span>
+      </div>
+      <div class="job-body">
+        <h3>IT Infrastructure — Libra Mining</h3>
+        <p class="job-org">Crypto project</p>
+        <ul><li>Deployed and supported multiple offices with redundant internet connections to ensure call center continuity.</li><li>Procured and configured equipment, including CCTV systems for call center oversight.</li><li>Developed the project's coin smart contract on Ethereum; authored the technical white paper and roadmap.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2014 — Feb 2015</div>
-      <div>
-        <h3>"Kazantip" Festival — Infrastructure Design</h3>
+    <div class="job" style="--cat-color:#5FD3C4">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Oct 2014 — Feb 2015</span>
+        <span class="job-cat">Infrastructure</span>
+      </div>
+      <div class="job-body">
+        <h3>Power, Sound &amp; Lighting Infrastructure Design — "Kazantip" Festival</h3>
         <p class="job-org">Cambodia · project-based</p>
-        <ul>
-          <li>Full power infrastructure design: load distribution across 5 generators with precise capacity calculations.</li>
-          <li>Designed sound (JBL SRX, Meyer Sound) and lighting (LED PAR, Blinder, Strobe) infrastructure.</li>
-          <li>Event fully prepared; cancelled by Cambodian authorities at the last moment.</li>
-        </ul>
+        <ul><li>Full design of the event's power infrastructure: load distribution across 5 generators with precise capacity calculations (Ah).</li><li>Designed sound (JBL SRX, Meyer Sound) and lighting (LED PAR, Blinder, Strobe) infrastructure across multiple stage zones.</li><li>Opening planned for Feb 18, 2015 on Koh Pos Island (Snake Island); fully prepared, cancelled by Cambodian authorities at the last moment.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2022 — Apr 2025</div>
-      <div>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Jul 2022 — Apr 2025</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
         <h3>Head of Cultivation — Hydroponic Farm / Microgreens</h3>
         <p class="job-org">Cambodia</p>
-        <ul>
-          <li>Full production-cycle responsibility: seed/substrate procurement, supplier sourcing (Spain, UK).</li>
-          <li>Automated growing with IoT devices (Xiaomi Mi). Business sold to partners, April 2025.</li>
-        </ul>
+        <ul><li>Full responsibility for the production cycle: seed and substrate procurement, sourcing nutrient suppliers (Spain) and seed suppliers (UK).</li><li>Automated growing processes using IoT devices (Xiaomi Mi). Business sold to partners in April 2025.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">~2022 — 2025</div>
-      <div>
+    <div class="job" style="--cat-color:#E8A33D">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Jan 2022 — Dec 2025</span>
+        <span class="job-cat">Business & Compliance</span>
+      </div>
+      <div class="job-body">
         <h3>Visa &amp; Immigration Consultant</h3>
         <p class="job-org">Expat services, Cambodia</p>
-        <ul>
-          <li>Full-service client support on visa/ID matters, premium market segment.</li>
-        </ul>
+        <ul><li>Full-service support for clients on visa and ID matters ("bring the documents, I'll handle everything" model), premium market segment.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2014</div>
-      <div>
-        <h3>Founder — Nikson LLC</h3>
+    <div class="job" style="--cat-color:#E8A33D">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Jun 2014 — Jul 2015</span>
+        <span class="job-cat">Business & Compliance</span>
+      </div>
+      <div class="job-body">
+        <h3>Founder — Nikson LLC (ООО «НИКСОН»)</h3>
         <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Founded and sole owner (OGRN 1142540004970); IT-agency activities ahead of relocating abroad.</li>
-        </ul>
+        <ul><li>Founded and served as sole owner of the company (OGRN 1142540004970), registered June 30, 2014; handled IT-agency-type activities as part of preparations to relocate abroad.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">May–Sep 2013</div>
-      <div>
-        <h3>IT Support — Vladivostok Mayoral Election Campaign</h3>
-        <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Designed an Android survey app with real-time server sync for campaign polling ("People's Expertise").</li>
-          <li>Built a ballot-scanning system for internal party primaries; procured 200+ Android tablets.</li>
-        </ul>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>May — Sep 2013</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
+        <h3>IT Support for Election Campaign</h3>
+        <p class="job-org">Vladivostok Mayoral Election Campaign</p>
+        <ul><li>As part of a development team, designed an Android app for conducting sociological surveys ("People's Expertise") with real-time server sync for campaign HQ.</li><li>Developed a ballot-scanning system for internal party primaries; procured and deployed 200+ Android tablets.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2009 (~6 mo)</div>
-      <div>
-        <h3>IT Consultant — Far East-Building Construction</h3>
-        <p class="job-org">Primorsky Krai</p>
-        <ul>
-          <li>Reconstructed the corporate network; designed CCTV and access-control systems.</li>
-          <li>Synced 1C across 3 servers; consolidated ~9–13 group companies into one infrastructure across two cities.</li>
-        </ul>
+    <div class="job" style="--cat-color:#5FD3C4">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Apr 2009 — Sep 2009</span>
+        <span class="job-cat">Infrastructure</span>
+      </div>
+      <div class="job-body">
+        <h3>IT Consultant, Corporate Network Reconstruction</h3>
+        <p class="job-org">Far East-Building Construction, Primorsky Krai</p>
+        <ul><li>Reconstructed the corporate network; designed CCTV and a personalized access-control system.</li><li>Synchronized 1C across 3 servers; consolidated ~9–13 group companies into a single infrastructure across two cities.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2008 — 2009</div>
-      <div>
+    <div class="job" style="--cat-color:#9C8CF2">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Mar 2008 — Mar 2009</span>
+        <span class="job-cat">Security</span>
+      </div>
+      <div class="job-body">
         <h3>Information Security Consultant</h3>
-        <p class="job-org">Edison / GUM / Green Cafe holding, Vladivostok</p>
-        <ul>
-          <li>Vulnerability audit of the group's IT infrastructure; implemented thin clients and PGP encryption.</li>
-          <li>Built a hidden, secured server infrastructure for sensitive data.</li>
-        </ul>
+        <p class="job-org">Group of Companies (Edison / GUM / Green Cafe holding), Vladivostok</p>
+        <ul><li>Conducted a vulnerability audit of the group's IT infrastructure.</li><li>Implemented thin clients and PGP encryption for corporate phones and email; built a hidden, secured server infrastructure.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">Summer 2006</div>
-      <div>
-        <h3>Specialist — Tax Reporting Server (FAPSI)</h3>
+    <div class="job" style="--cat-color:#5FD3C4">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Jun 2004 — Sep 2004</span>
+        <span class="job-cat">Infrastructure</span>
+      </div>
+      <div class="job-body">
+        <h3>Internship — Database Systems Support</h3>
+        <p class="job-org">Vladivostok Traffic Police (GAI) Division</p>
+        <ul><li>Summer internship as part of law faculty studies (specialization in criminal law / IT crime); configured and supported a records database as practical coursework.</li></ul>
+      </div>
+    </div>
+    <div class="job" style="--cat-color:#9C8CF2">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Jan 2005 — Jun 2005</span>
+        <span class="job-cat">Security</span>
+      </div>
+      <div class="job-body">
+        <h3>Specialist, Tax Reporting Server — FAPSI</h3>
         <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Built and configured a server for electronic tax filing by legal entities; trained new staff.</li>
-        </ul>
+        <ul><li>Built and configured a tax reporting server for electronic filing by legal entities; trained new staff.</li><li>First hands-on experience with PGP data encryption.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">Spring 2006</div>
-      <div>
+    <div class="job" style="--cat-color:#E8A33D">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Feb 2006 — Aug 2006</span>
+        <span class="job-cat">Business & Compliance</span>
+      </div>
+      <div class="job-body">
         <h3>IT Support &amp; Debt Collection Specialist — RosBank</h3>
         <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Problem debt department: liaised with credit organizations, worked with databases.</li>
-        </ul>
+        <ul><li>Problem debt department: liaised with third-party credit organizations; worked with databases.</li><li>Left this role in August 2006 following a car accident that required an extended recovery period.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">Summer 2005</div>
-      <div>
-        <h3>Internship — Traffic Police (GAI) Database</h3>
-        <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Configured and implemented a wanted-persons database during a law-faculty practicum.</li>
-        </ul>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Sep 2007 — Dec 2007</span>
+        <span class="job-cat">Dev & Automation</span>
       </div>
-    </div>
-
-    <div class="job">
-      <div class="job-meta">Fall–Winter 2007</div>
-      <div>
+      <div class="job-body">
         <h3>Freelance Web Development — TRF-United</h3>
         <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Built an interactive customs (HS) code catalog with jQuery/AJAX/XML.</li>
-        </ul>
+        <ul><li>Developed an interactive catalog of HS (customs) codes using jQuery/AJAX/XML.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">Summer 2007</div>
-      <div>
-        <h3>System Administrator — Avtogarant Insurance</h3>
+    <div class="job" style="--cat-color:#5FD3C4">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Apr 2007 — Aug 2007</span>
+        <span class="job-cat">Infrastructure</span>
+      </div>
+      <div class="job-body">
+        <h3>System Administrator (project-based) — Avtogarant Insurance</h3>
         <p class="job-org">Vladivostok</p>
-        <ul>
-          <li>Administered the branch network; synced with the federal network; supported 1C and insurance databases.</li>
-        </ul>
+        <ul><li>Administered the branch network (~20 employees); synced with the federal network; supported 1C and insurance product databases.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">2007 — 2013</div>
-      <div>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Jan 2007 — Dec 2013</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
         <h3>Semi-Freelance IT Support</h3>
-        <p class="job-org">Restart LLC, mortgage broker, "Hot Car" and others, Vladivostok</p>
-        <ul>
-          <li>Ongoing project-based IT support for multiple private clients.</li>
-        </ul>
+        <p class="job-org">Restart LLC, Far East Mortgage Broker, "Hot Car" (AVTOREGION 25), and others, Vladivostok</p>
+        <ul><li>Ongoing project-based IT support for multiple private clients: computer and database setup, documentation assistance.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">Winter 1999/2000</div>
-      <div>
-        <h3>Developer &amp; Sysadmin — Avtopartner Co. Ltd.</h3>
-        <p class="job-org">Vladivostok · seasonal</p>
-        <ul>
-          <li>Built a clone of Japanese car-auction sites: PHP scraping, SQL matching database, USB security-token emulation.</li>
-        </ul>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Dec 1999 — Feb 2000</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
+        <h3>Developer &amp; System Administrator (seasonal) — Avtopartner Co. Ltd.</h3>
+        <p class="job-org">Vladivostok</p>
+        <ul><li>Built a Russian-language clone of Japanese car auction sites: PHP scraping at 5-minute intervals, SQL matching database, emulated hardware USB security token.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">Winter 2000/2001</div>
-      <div>
-        <h3>Developer — "Kontinent Advertising Materials"</h3>
-        <p class="job-org">Vladivostok · seasonal</p>
-        <ul>
-          <li>Built a custom PHP/MySQL CMS for a self-service online product catalog.</li>
-        </ul>
+    <div class="job" style="--cat-color:#41C285">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>Dec 2000 — Feb 2001</span>
+        <span class="job-cat">Dev & Automation</span>
+      </div>
+      <div class="job-body">
+        <h3>Developer (seasonal) — "Kontinent Advertising Materials"</h3>
+        <p class="job-org">Vladivostok</p>
+        <ul><li>Built a custom PHP/MySQL CMS for an online product catalog, allowing sellers to add and remove products themselves.</li></ul>
       </div>
     </div>
   </section>
 
   <!-- EDUCATION -->
   <section id="education">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Education</h2></div>
-
-    <div class="job">
-      <div class="job-meta">2004 — 2008</div>
-      <div>
+    <div class="sec-head"><h2>Education</h2></div>
+    
+    <div class="job" style="--cat-color:#5FD3C4">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>2004 — 2008</span>
+      </div>
+      <div class="job-body">
         <h3>Faculty of Law — Criminal Law (IT Crime)</h3>
         <p class="job-org">Far Eastern State University (DVGU), Vladivostok</p>
-        <ul>
-          <li>Thesis: "Prevention of Crimes in the Field of Computer Information."</li>
-        </ul>
+        <ul><li>Thesis: "Prevention of Crimes in the Field of Computer Information."</li><li>Internship — database systems support at the Vladivostok Traffic Police (GAI) division.</li></ul>
       </div>
     </div>
-
-    <div class="job">
-      <div class="job-meta">1999 — 2004</div>
-      <div>
+    <div class="job" style="--cat-color:#5FD3C4">
+      <div class="job-meta">
+        <span class="job-date"><span class="dot"></span>1999 — 2004</span>
+      </div>
+      <div class="job-body">
         <h3>Computer Software &amp; Automated Systems</h3>
         <p class="job-org">Institute of Mathematics and Computer Science, DVGU, Vladivostok</p>
-        <ul>
-          <li>Thesis: visualization of Sea of Okhotsk buoy data for gray whale tracking — FTP collection, SQL processing, map visualization.</li>
-          <li>Received a letter of appreciation from Greenpeace for the project.</li>
-        </ul>
+        <ul><li>Thesis project — visualization of oceanographic data from buoys in the Sea of Okhotsk for tracking gray whales: FTP data collection, SQL processing, map-based visualization.</li><li>Academic advisor — V.V. Gribova (Institute of Automation and Control Processes, Far Eastern Branch of the Russian Academy of Sciences). Received a letter of appreciation from Greenpeace for the project.</li></ul>
       </div>
     </div>
   </section>
 
   <!-- ADDITIONAL -->
   <section id="additional">
-    <div class="sec-head"><span class="sec-num">05</span><h2>Additional</h2></div>
-    <p>IELTS — 7.9 (2007). Junior Achievement certificate, "Applied Economics" (1999). First entrepreneurial experience — ran a computer club as a student (2002–2003, informal venture).</p>
+    <div class="sec-head"><h2>Additional</h2></div>
+    <p>IELTS — 7.9 (2008). Junior Achievement certificate, "Applied Economics" (1999). First entrepreneurial experience — ran a computer club as a student (2002–2003, informal venture).</p>
   </section>
 
   <footer>
@@ -623,10 +590,11 @@
       <span class="sep">·</span>
       <a href="https://t.me/IuriiAfinogenov">Telegram</a>
       <span class="sep">·</span>
-      <a href="https://linkedin.com/in/iuriiafinogenov">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/iurii-afinogenov">LinkedIn</a>
       <span class="sep">·</span>
       <a href="Afinogenov_Resume_EN.pdf" download>Download PDF</a>
     </div>
+    <p class="alt-links">Also on <a href="https://www.dropbox.com/scl/fi/6m06ad5jujdvdi52ax44d/Afinogenov_Resume_EN.pdf?rlkey=htz1h8gumg0ynpxbgm94cha6v&amp;st=gqzbqksy&amp;dl=0">Dropbox</a> · <a href="https://drive.google.com/file/d/1zURILcZL8_yu55X1B4EmlvTY1G2HaK4S/view?usp=sharing">Google Drive</a></p>
     <div>Phnom Penh, Cambodia — updated 2026</div>
   </footer>
 </div>
