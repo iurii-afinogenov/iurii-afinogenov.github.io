@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iurii Afinogenov — Technology Architect &amp; Systems Coordinator</title>
-<meta name="description" content="Iurii Afinogenov — IT infrastructure, network security, international business &amp; compliance. Phnom Penh, Cambodia.">
+<title data-i18n="meta.title">Iurii Afinogenov — Technology Architect &amp; Systems Coordinator</title>
+<meta name="description" data-i18n-attr="content:meta.desc" content="Iurii Afinogenov — IT infrastructure, network security, international business &amp; compliance. Phnom Penh, Cambodia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Khmer:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0D1B2A;
@@ -24,7 +24,7 @@
     --violet:#9C8CF2;
     --green:#41C285;
     --display: 'Fraunces', Georgia, serif;
-    --body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --body: 'IBM Plex Sans', 'Noto Sans Khmer', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
   }
 
@@ -49,9 +49,35 @@
 
   .wrap{max-width:960px; margin:0 auto; padding:0 28px;}
 
+  /* ---------- LANGUAGE SWITCHER ---------- */
+  .langbar{
+    display:flex; justify-content:flex-end; align-items:center;
+    gap:4px; padding:16px 0 0;
+    font-family:var(--mono); font-size:12.5px;
+  }
+  .langbar button{
+    background:transparent; border:1px solid transparent; color:var(--ink-faint);
+    padding:6px 10px; border-radius:6px; cursor:pointer; font-family:inherit; font-size:inherit;
+  }
+  .langbar button:hover{color:var(--ink); border-color:var(--line-strong);}
+  .langbar button.active{color:var(--amber); border-color:var(--amber); background:rgba(232,163,61,.08); font-weight:600;}
+  .langbar .sep{color:var(--line-strong);}
+  /* Mobile: collapse into a select-like toggle */
+  .lang-mobile{display:none;}
+  @media (max-width:560px){
+    .langbar{display:none;}
+    .lang-mobile{
+      display:flex; justify-content:flex-end; padding:16px 0 0;
+    }
+    .lang-mobile select{
+      background:var(--bg-raised); color:var(--ink); border:1px solid var(--line-strong);
+      border-radius:6px; padding:8px 10px; font-family:var(--mono); font-size:12.5px;
+    }
+  }
+
   /* ---------- HEADER ---------- */
   header.hero{
-    padding:64px 0 44px;
+    padding:24px 0 44px;
     border-bottom:1px solid var(--line);
     position:relative;
   }
@@ -61,7 +87,7 @@
     letter-spacing:.16em;
     text-transform:uppercase;
     color:var(--amber);
-    margin:0 0 14px;
+    margin:24px 0 14px;
     display:flex; align-items:center; gap:10px;
   }
   .eyebrow::before{content:''; width:26px; height:1px; background:var(--amber);}
@@ -120,11 +146,7 @@
   .contact-row a:hover{border-color:var(--amber); color:var(--amber);}
   .sep{color:var(--ink-faint);}
 
-  .alt-links{font-family:var(--mono); font-size:12px; color:var(--ink-faint); margin:0 0 28px;}
-  .alt-links a{color:var(--ink-faint); border-bottom:1px dotted var(--line-strong);}
-  .alt-links a:hover{color:var(--cyan);}
-
-  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:26px;}
   .btn{
     font-family:var(--mono); font-size:13px; letter-spacing:.02em;
     text-decoration:none; padding:12px 20px; border-radius:6px;
@@ -148,6 +170,14 @@
 
   p{margin:0 0 14px; max-width:68ch; color:var(--ink);}
   p.lead{color:var(--ink-soft);}
+
+  /* Notice for partially-translated sections */
+  .i18n-note{
+    font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+    border:1px dashed var(--line-strong); border-radius:6px; padding:10px 14px;
+    margin-bottom:20px; display:none;
+  }
+  .i18n-note.show{display:block;}
 
   /* Skills grid */
   .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
@@ -194,12 +224,11 @@
   @media (max-width:640px){
     .job{grid-template-columns:1fr; gap:8px;}
     .skills-grid{grid-template-columns:1fr;}
-    header.hero{padding:48px 0 36px;}
+    header.hero{padding:8px 0 36px;}
   }
 
   footer{padding:44px 0 60px; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);}
   footer .contact-row{margin-bottom:14px;}
-  footer .alt-links{margin-bottom:18px;}
 
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 </style>
@@ -207,13 +236,31 @@
 <body>
 
 <div class="wrap">
+
+  <nav class="langbar" aria-label="Language switcher">
+    <button type="button" data-lang="en">EN</button><span class="sep">·</span>
+    <button type="button" data-lang="ru">Русский</button><span class="sep">·</span>
+    <button type="button" data-lang="uk">Українська</button><span class="sep">·</span>
+    <button type="button" data-lang="km">ខ្មែរ</button><span class="sep">·</span>
+    <button type="button" data-lang="zh">中文</button>
+  </nav>
+  <div class="lang-mobile">
+    <select aria-label="Language" id="langSelect">
+      <option value="en">EN — English</option>
+      <option value="ru">RU — Русский</option>
+      <option value="uk">UK — Українська</option>
+      <option value="km">KM — ខ្មែរ</option>
+      <option value="zh">ZH — 中文</option>
+    </select>
+  </div>
+
   <header class="hero">
-    <p class="eyebrow">Technology Architect / Systems Coordinator</p>
+    <p class="eyebrow" data-i18n="eyebrow">Technology Architect / Systems Coordinator</p>
     <h1>Iurii Afinogenov</h1>
-    <p class="role-line">IT infrastructure, network security, development &amp; automation, international business and compliance — 20+ years, entities founded and run across Russia, Cambodia, Hong Kong and the US.</p>
+    <p class="role-line" data-i18n-html="role.line">IT infrastructure, network security, development &amp; automation, international business and compliance — 20+ years, entities founded and run across Russia, Cambodia, Hong Kong and the US.</p>
 
     <div class="route-panel">
-      <p class="route-cap">Career &amp; entity map</p>
+      <p class="route-cap" data-i18n-html="route.cap">Career &amp; entity map</p>
       <svg class="route" viewBox="0 0 880 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Route from Vladivostok, Russia through Seoul to Sihanoukville then Phnom Penh, Cambodia; Ensis Limited (Hong Kong) founded en route to Phnom Penh in 2019; Dzambala LLC (Delaware) founded 2021 after settling in Phnom Penh; Nikson LLC founded in Vladivostok in the final year before departure">
         <path class="trace" d="M60,60 L560,60"/>
         <path class="trace-branch" d="M480,60 C 495,60 500,32 495,24"/>
@@ -221,33 +268,33 @@
 
         <circle class="node" cx="75" cy="60" r="5"/>
         <text x="75" y="82" text-anchor="middle">RU</text>
-        <text class="node-label" x="75" y="44" text-anchor="middle">Vladivostok</text>
-        <text class="yr" x="75" y="98" text-anchor="middle">Nikson · 2014–15</text>
+        <text class="node-label" data-i18n="route.vladivostok" x="75" y="44" text-anchor="middle">Vladivostok</text>
+        <text class="yr" data-i18n="route.nikson" x="75" y="98" text-anchor="middle">Nikson · 2014–15</text>
 
         <circle class="node" cx="230" cy="60" r="5"/>
         <text x="230" y="82" text-anchor="middle">KR</text>
-        <text class="node-label" x="230" y="44" text-anchor="middle">Seoul</text>
+        <text class="node-label" data-i18n="route.seoul" x="230" y="44" text-anchor="middle">Seoul</text>
 
         <circle class="node" cx="400" cy="60" r="5"/>
         <text x="400" y="82" text-anchor="middle">KH</text>
-        <text class="node-label" x="400" y="44" text-anchor="middle">Sihanoukville</text>
+        <text class="node-label" data-i18n="route.sihanoukville" x="400" y="44" text-anchor="middle">Sihanoukville</text>
 
         <circle class="node active" cx="560" cy="60" r="6.5"/>
         <text x="560" y="82" text-anchor="middle">KH</text>
-        <text class="node-label" x="560" y="44" text-anchor="middle">Phnom Penh — current base</text>
+        <text class="node-label" data-i18n="route.phnompenh" x="560" y="44" text-anchor="middle">Phnom Penh — current base</text>
 
         <circle class="node branch" cx="495" cy="24" r="4.5"/>
-        <text class="node-label" x="509" y="21" text-anchor="start">Ensis Limited (Hong Kong)</text>
-        <text class="yr" x="509" y="34" text-anchor="start">founded 2019</text>
+        <text class="node-label" data-i18n="route.ensis" x="509" y="21" text-anchor="start">Ensis Limited (Hong Kong)</text>
+        <text class="yr" data-i18n="route.ensis.yr" x="509" y="34" text-anchor="start">founded 2019</text>
 
         <circle class="node branch" cx="650" cy="100" r="4.5"/>
-        <text class="node-label" x="664" y="97" text-anchor="start">Dzambala LLC (Delaware)</text>
-        <text class="yr" x="664" y="110" text-anchor="start">founded 2021</text>
+        <text class="node-label" data-i18n="route.dzambala" x="664" y="97" text-anchor="start">Dzambala LLC (Delaware)</text>
+        <text class="yr" data-i18n="route.dzambala.yr" x="664" y="110" text-anchor="start">founded 2021</text>
       </svg>
     </div>
 
     <div class="contact-row">
-      <span>Phnom Penh, Cambodia</span>
+      <span data-i18n="contact.location">Phnom Penh, Cambodia</span>
       <span class="sep">·</span>
       <a href="tel:+85569307033">+855 69 307 033</a>
       <span class="sep">·</span>
@@ -257,70 +304,76 @@
       <span class="sep">·</span>
       <a href="https://www.linkedin.com/in/iurii-afinogenov">LinkedIn</a>
     </div>
-    <p class="alt-links">Résumé PDF also available via <a href="https://www.dropbox.com/scl/fi/6m06ad5jujdvdi52ax44d/Afinogenov_Resume_EN.pdf?rlkey=htz1h8gumg0ynpxbgm94cha6v&amp;st=gqzbqksy&amp;dl=0">Dropbox</a> and <a href="https://drive.google.com/file/d/1zURILcZL8_yu55X1B4EmlvTY1G2HaK4S/view?usp=sharing">Google Drive</a>.</p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="Afinogenov_Resume_EN.pdf" download>↓ Download PDF résumé</a>
-      <a class="btn btn-ghost" href="#experience">View experience</a>
+      <a class="btn btn-primary" id="pdfBtn" href="Afinogenov_Resume_EN.pdf" download><span data-i18n="btn.download">↓ Download PDF résumé</span></a>
+      <a class="btn btn-ghost" href="#experience" data-i18n="btn.experience">View experience</a>
     </div>
   </header>
 
   <!-- PROFILE -->
   <section id="profile">
-    <div class="sec-head"><h2>Profile</h2></div>
-    <p>20+ years of experience spanning IT infrastructure, network security, web development/automation, and international entrepreneurship. Built and administered corporate networks and server infrastructure, conducted vulnerability audits and implemented data protection (PGP encryption, hardening, access control), developed and maintained web applications (PHP/Laravel, SQL, Python/Selenium), founded and managed companies across multiple jurisdictions (Russia, USA, Cambodia, Hong Kong), and supported international trade and payment transactions.</p>
-    <p class="lead">I'm not just a coder who executes a spec — I design the solution as a whole, from analysis and options through to architecture and infrastructure. Just point me at the goal; you won't need to manage me step by step. I'm equally comfortable building a team from scratch or plugging into one that's already there, I negotiate directly with outside partners and vendors, and I take ownership of the outcome — including the parts I handle with my own hands when it counts — reporting back on progress and results at every stage.</p>
-    <p class="lead">IT is where I gravitate and where I'm strongest — but the same systems-thinking has been called on well outside it, from full power/sound/lighting infrastructure design for a music festival (Kazantip) to hands-on operational builds. The common thread isn't a specific tech stack — it's taking an unfamiliar problem and owning it through to a working result.</p>
+    <div class="sec-head"><h2 data-i18n="sec.profile">Profile</h2></div>
+    <p data-i18n="profile.p1">20+ years of experience spanning IT infrastructure, network security, web development/automation, and international entrepreneurship. Built and administered corporate networks and server infrastructure, conducted vulnerability audits and implemented data protection (PGP encryption, hardening, access control), developed and maintained web applications (PHP/Laravel, SQL, Python/Selenium), founded and managed companies across multiple jurisdictions (Russia, USA, Cambodia, Hong Kong), and supported international trade and payment transactions.</p>
+    <p class="lead" data-i18n="profile.p2">I'm not just a coder who executes a spec — I design the solution as a whole, from analysis and options through to architecture and infrastructure. Just point me at the goal; you won't need to manage me step by step. I'm equally comfortable building a team from scratch or plugging into one that's already there, I negotiate directly with outside partners and vendors, and I take ownership of the outcome — including the parts I handle with my own hands when it counts — reporting back on progress and results at every stage.</p>
+    <p class="lead" data-i18n="profile.p3">IT is where I gravitate and where I'm strongest — but the same systems-thinking has been called on well outside it, from full power/sound/lighting infrastructure design for a music festival (Kazantip) to hands-on operational builds. The common thread isn't a specific tech stack — it's taking an unfamiliar problem and owning it through to a working result.</p>
   </section>
 
   <!-- SKILLS -->
   <section id="skills">
-    <div class="sec-head"><h2>Key Skills</h2></div>
+    <div class="sec-head"><h2 data-i18n="sec.skills">Key Skills</h2></div>
     <div class="skills-grid">
-      
+
       <div class="skill-card" style="--cat-color:#5FD3C4">
-        <div class="skill-tag">Infrastructure</div>
-        <h4>Infrastructure &amp; Networks</h4>
-        <p>Linux/Windows Server, corporate network design, redundant internet connections, CCTV systems, IP telephony (VoIP/Zadarma), Novell (early experience)</p>
+        <div class="skill-tag" data-i18n="skill1.tag">Infrastructure</div>
+        <h4 data-i18n-html="skill1.h">Infrastructure &amp; Networks</h4>
+        <p data-i18n-html="skill1.p">Linux/Windows Server, corporate network design, redundant internet connections, CCTV systems, IP telephony (VoIP/Zadarma), Novell (early experience)</p>
       </div>
       <div class="skill-card" style="--cat-color:#9C8CF2">
-        <div class="skill-tag">Security</div>
-        <h4>Information Security</h4>
-        <p>PGP encryption &amp; signing, full-disk/system encryption, hardening, access control, vulnerability audits, secure server infrastructure, thin clients. Self-taught offensive-security fundamentals: wireless network security testing (Kali Linux), SQL injection &amp; database resilience testing, QR/Base64-encoded data analysis.</p>
+        <div class="skill-tag" data-i18n="skill2.tag">Security</div>
+        <h4 data-i18n-html="skill2.h">Information Security</h4>
+        <p data-i18n-html="skill2.p">PGP encryption &amp; signing, full-disk/system encryption, hardening, access control, vulnerability audits, secure server infrastructure, thin clients. Self-taught offensive-security fundamentals: wireless network security testing (Kali Linux), SQL injection &amp; database resilience testing, QR/Base64-encoded data analysis.</p>
       </div>
       <div class="skill-card" style="--cat-color:#41C285">
-        <div class="skill-tag">Dev & Automation</div>
-        <h4>Development &amp; Automation</h4>
-        <p>PHP, Laravel, SQL/MySQL, HTML/CSS/jQuery/AJAX/XML, Python (Selenium, AI-augmented via Copilot/Claude), tkinter, 1C integration</p>
+        <div class="skill-tag" data-i18n="skill3.tag">Dev & Automation</div>
+        <h4 data-i18n-html="skill3.h">Development &amp; Automation</h4>
+        <p data-i18n-html="skill3.p">PHP, Laravel, SQL/MySQL, HTML/CSS/jQuery/AJAX/XML, Python (Selenium, AI-augmented via Copilot/Claude), tkinter, 1C integration</p>
       </div>
       <div class="skill-card" style="--cat-color:#FF7A59">
-        <div class="skill-tag">Fintech / Crypto</div>
-        <h4>Payment Systems &amp; Fintech</h4>
-        <p>Stripe, PayPal, Coinpayments, custom payment aggregators, SWIFT (MT103/MT202/MT799, RMA), crypto payments (ETH/ERC20, TRX/TRC20), OAuth</p>
+        <div class="skill-tag" data-i18n="skill4.tag">Fintech / Crypto</div>
+        <h4 data-i18n-html="skill4.h">Payment Systems &amp; Fintech</h4>
+        <p data-i18n-html="skill4.p">Stripe, PayPal, Coinpayments, custom payment aggregators, SWIFT (MT103/MT202/MT799, RMA), crypto payments (ETH/ERC20, TRX/TRC20), OAuth</p>
       </div>
       <div class="skill-card" style="--cat-color:#E8A33D">
-        <div class="skill-tag">Business & Compliance</div>
-        <h4>International Business &amp; Compliance</h4>
-        <p>Company registration &amp; administration (Russia, US/Delaware, Cambodia, Hong Kong), banking compliance, corporate account opening, contract management</p>
+        <div class="skill-tag" data-i18n="skill5.tag">Business & Compliance</div>
+        <h4 data-i18n-html="skill5.h">International Business &amp; Compliance</h4>
+        <p data-i18n-html="skill5.p">Company registration &amp; administration (Russia, US/Delaware, Cambodia, Hong Kong), banking compliance, corporate account opening, contract management</p>
       </div>
       <div class="skill-card" style="--cat-color:#E8A33D">
-        <div class="skill-tag">Business & Compliance</div>
-        <h4>Management &amp; Coordination</h4>
-        <p>Coordinating teams of up to 50 people, project &amp; contractor management, IT infrastructure for large events</p>
+        <div class="skill-tag" data-i18n="skill6.tag">Business & Compliance</div>
+        <h4 data-i18n-html="skill6.h">Management &amp; Coordination</h4>
+        <p data-i18n-html="skill6.p">Coordinating teams of up to 50 people, project &amp; contractor management, IT infrastructure for large events</p>
       </div>
     </div>
-    <p class="lead" style="margin-top:18px; font-family:var(--mono); font-size:13px;">Languages: Russian (native), English (fluent, IELTS 7.9, 2008)</p>
+    <p class="lead" style="margin-top:18px; font-family:var(--mono); font-size:13px;" data-i18n="skill.langs">Languages: Russian (native), English (fluent, IELTS 7.9, 2008)</p>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="sec-head"><h2>Experience</h2></div>
-    <div class="legend"><span class="legend-item"><span class="legend-dot" style="--cat-color:#5FD3C4"></span>Infrastructure</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#9C8CF2"></span>Security</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#41C285"></span>Dev & Automation</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#FF7A59"></span>Fintech / Crypto</span><span class="legend-item"><span class="legend-dot" style="--cat-color:#E8A33D"></span>Business & Compliance</span></div>
-    
+    <div class="sec-head"><h2 data-i18n="sec.experience">Experience</h2></div>
+    <p class="i18n-note" id="expNote">This detailed history is shown in English pending native-speaker translation review.</p>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="--cat-color:#5FD3C4"></span><span data-i18n="legend.infra">Infrastructure</span></span>
+      <span class="legend-item"><span class="legend-dot" style="--cat-color:#9C8CF2"></span><span data-i18n="legend.sec">Security</span></span>
+      <span class="legend-item"><span class="legend-dot" style="--cat-color:#41C285"></span><span data-i18n="legend.dev">Dev & Automation</span></span>
+      <span class="legend-item"><span class="legend-dot" style="--cat-color:#FF7A59"></span><span data-i18n="legend.fin">Fintech / Crypto</span></span>
+      <span class="legend-item"><span class="legend-dot" style="--cat-color:#E8A33D"></span><span data-i18n="legend.biz">Business & Compliance</span></span>
+    </div>
+
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
-        <span class="job-date"><span class="dot dot-current"></span>2025 — Present</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-date"><span class="dot dot-current"></span>2025 — <span data-i18n="present">Present</span></span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Facebook Marketplace/Groups Automation Tool Development</h3>
@@ -330,8 +383,8 @@
     </div>
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
-        <span class="job-date"><span class="dot dot-current"></span>2023 — Present</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-date"><span class="dot dot-current"></span>2023 — <span data-i18n="present">Present</span></span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Telegram Mini-App Online Store — YoYo Shop</h3>
@@ -341,8 +394,8 @@
     </div>
     <div class="job" style="--cat-color:#E8A33D">
       <div class="job-meta">
-        <span class="job-date"><span class="dot dot-current"></span>2017 — Present</span>
-        <span class="job-cat">Business & Compliance</span>
+        <span class="job-date"><span class="dot dot-current"></span>2017 — <span data-i18n="present">Present</span></span>
+        <span class="job-cat" data-i18n="legend.biz">Business & Compliance</span>
       </div>
       <div class="job-body">
         <h3>Founder &amp; Director — SKASALE CO., LTD</h3>
@@ -353,7 +406,7 @@
     <div class="job" style="--cat-color:#E8A33D">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>2019 — 2024</span>
-        <span class="job-cat">Business & Compliance</span>
+        <span class="job-cat" data-i18n="legend.biz">Business & Compliance</span>
       </div>
       <div class="job-body">
         <h3>Founder — Ensis Limited</h3>
@@ -364,7 +417,7 @@
     <div class="job" style="--cat-color:#FF7A59">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>2020 — 2021</span>
-        <span class="job-cat">Fintech / Crypto</span>
+        <span class="job-cat" data-i18n="legend.fin">Fintech / Crypto</span>
       </div>
       <div class="job-body">
         <h3>IT Infrastructure &amp; Platform Development — Crypto Platform</h3>
@@ -375,7 +428,7 @@
     <div class="job" style="--cat-color:#FF7A59">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>~2022 (6 months)</span>
-        <span class="job-cat">Fintech / Crypto</span>
+        <span class="job-cat" data-i18n="legend.fin">Fintech / Crypto</span>
       </div>
       <div class="job-body">
         <h3>IT Infrastructure — Libra Mining</h3>
@@ -386,7 +439,7 @@
     <div class="job" style="--cat-color:#5FD3C4">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Oct 2014 — Feb 2015</span>
-        <span class="job-cat">Infrastructure</span>
+        <span class="job-cat" data-i18n="legend.infra">Infrastructure</span>
       </div>
       <div class="job-body">
         <h3>Power, Sound &amp; Lighting Infrastructure Design — "Kazantip" Festival</h3>
@@ -397,7 +450,7 @@
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Jul 2022 — Apr 2025</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Head of Cultivation — Hydroponic Farm / Microgreens</h3>
@@ -408,7 +461,7 @@
     <div class="job" style="--cat-color:#E8A33D">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Jan 2022 — Dec 2025</span>
-        <span class="job-cat">Business & Compliance</span>
+        <span class="job-cat" data-i18n="legend.biz">Business & Compliance</span>
       </div>
       <div class="job-body">
         <h3>Visa &amp; Immigration Consultant</h3>
@@ -419,7 +472,7 @@
     <div class="job" style="--cat-color:#E8A33D">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Jun 2014 — Jul 2015</span>
-        <span class="job-cat">Business & Compliance</span>
+        <span class="job-cat" data-i18n="legend.biz">Business & Compliance</span>
       </div>
       <div class="job-body">
         <h3>Founder — Nikson LLC (ООО «НИКСОН»)</h3>
@@ -430,7 +483,7 @@
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>May — Sep 2013</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>IT Support for Election Campaign</h3>
@@ -441,7 +494,7 @@
     <div class="job" style="--cat-color:#5FD3C4">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Apr 2009 — Sep 2009</span>
-        <span class="job-cat">Infrastructure</span>
+        <span class="job-cat" data-i18n="legend.infra">Infrastructure</span>
       </div>
       <div class="job-body">
         <h3>IT Consultant, Corporate Network Reconstruction</h3>
@@ -452,7 +505,7 @@
     <div class="job" style="--cat-color:#9C8CF2">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Mar 2008 — Mar 2009</span>
-        <span class="job-cat">Security</span>
+        <span class="job-cat" data-i18n="legend.sec">Security</span>
       </div>
       <div class="job-body">
         <h3>Information Security Consultant</h3>
@@ -463,7 +516,7 @@
     <div class="job" style="--cat-color:#5FD3C4">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Jun 2004 — Sep 2004</span>
-        <span class="job-cat">Infrastructure</span>
+        <span class="job-cat" data-i18n="legend.infra">Infrastructure</span>
       </div>
       <div class="job-body">
         <h3>Internship — Database Systems Support</h3>
@@ -474,7 +527,7 @@
     <div class="job" style="--cat-color:#9C8CF2">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Jan 2005 — Jun 2005</span>
-        <span class="job-cat">Security</span>
+        <span class="job-cat" data-i18n="legend.sec">Security</span>
       </div>
       <div class="job-body">
         <h3>Specialist, Tax Reporting Server — FAPSI</h3>
@@ -485,7 +538,7 @@
     <div class="job" style="--cat-color:#E8A33D">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Feb 2006 — Aug 2006</span>
-        <span class="job-cat">Business & Compliance</span>
+        <span class="job-cat" data-i18n="legend.biz">Business & Compliance</span>
       </div>
       <div class="job-body">
         <h3>IT Support &amp; Debt Collection Specialist — RosBank</h3>
@@ -496,7 +549,7 @@
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Sep 2007 — Dec 2007</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Freelance Web Development — TRF-United</h3>
@@ -507,7 +560,7 @@
     <div class="job" style="--cat-color:#5FD3C4">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Apr 2007 — Aug 2007</span>
-        <span class="job-cat">Infrastructure</span>
+        <span class="job-cat" data-i18n="legend.infra">Infrastructure</span>
       </div>
       <div class="job-body">
         <h3>System Administrator (project-based) — Avtogarant Insurance</h3>
@@ -518,7 +571,7 @@
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Jan 2007 — Dec 2013</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Semi-Freelance IT Support</h3>
@@ -529,7 +582,7 @@
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Dec 1999 — Feb 2000</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Developer &amp; System Administrator (seasonal) — Avtopartner Co. Ltd.</h3>
@@ -540,7 +593,7 @@
     <div class="job" style="--cat-color:#41C285">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>Dec 2000 — Feb 2001</span>
-        <span class="job-cat">Dev & Automation</span>
+        <span class="job-cat" data-i18n="legend.dev">Dev & Automation</span>
       </div>
       <div class="job-body">
         <h3>Developer (seasonal) — "Kontinent Advertising Materials"</h3>
@@ -552,8 +605,9 @@
 
   <!-- EDUCATION -->
   <section id="education">
-    <div class="sec-head"><h2>Education</h2></div>
-    
+    <div class="sec-head"><h2 data-i18n="sec.education">Education</h2></div>
+    <p class="i18n-note" id="eduNote">This detailed history is shown in English pending native-speaker translation review.</p>
+
     <div class="job" style="--cat-color:#5FD3C4">
       <div class="job-meta">
         <span class="job-date"><span class="dot"></span>2004 — 2008</span>
@@ -578,8 +632,8 @@
 
   <!-- ADDITIONAL -->
   <section id="additional">
-    <div class="sec-head"><h2>Additional</h2></div>
-    <p>IELTS — 7.9 (2008). Junior Achievement certificate, "Applied Economics" (1999). First entrepreneurial experience — ran a computer club as a student (2002–2003, informal venture).</p>
+    <div class="sec-head"><h2 data-i18n="sec.additional">Additional</h2></div>
+    <p data-i18n="additional.p">IELTS — 7.9 (2008). Junior Achievement certificate, "Applied Economics" (1999). First entrepreneurial experience — ran a computer club as a student (2002–2003, informal venture).</p>
   </section>
 
   <footer>
@@ -592,12 +646,103 @@
       <span class="sep">·</span>
       <a href="https://www.linkedin.com/in/iurii-afinogenov">LinkedIn</a>
       <span class="sep">·</span>
-      <a href="Afinogenov_Resume_EN.pdf" download>Download PDF</a>
+      <a href="Afinogenov_Resume_EN.pdf" download id="pdfBtnFooter" data-i18n="nav.download.footer">Download PDF</a>
     </div>
-    <p class="alt-links">Also on <a href="https://www.dropbox.com/scl/fi/6m06ad5jujdvdi52ax44d/Afinogenov_Resume_EN.pdf?rlkey=htz1h8gumg0ynpxbgm94cha6v&amp;st=gqzbqksy&amp;dl=0">Dropbox</a> · <a href="https://drive.google.com/file/d/1zURILcZL8_yu55X1B4EmlvTY1G2HaK4S/view?usp=sharing">Google Drive</a></p>
-    <div>Phnom Penh, Cambodia — updated 2026</div>
+    <div data-i18n="footer.updated">Phnom Penh, Cambodia — updated 2026</div>
   </footer>
 </div>
+
+<script src="translations.js"></script>
+<script>
+(function(){
+  var SUPPORTED = ['en','ru','uk','km','zh'];
+  var FALLBACK = 'en';
+
+  function detectLang(){
+    var saved = localStorage.getItem('site_lang');
+    if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
+
+    var browserLangs = navigator.languages || [navigator.language || navigator.userLanguage || 'en'];
+    for (var i = 0; i < browserLangs.length; i++){
+      var raw = (browserLangs[i] || '').toLowerCase();
+      var primary = raw.split('-')[0];
+      if (primary === 'zh'){
+        // Only Simplified Chinese content is provided; Traditional variants fall back to English.
+        if (raw.indexOf('tw') !== -1 || raw.indexOf('hk') !== -1 || raw.indexOf('hant') !== -1) continue;
+        return 'zh';
+      }
+      if (SUPPORTED.indexOf(primary) !== -1) return primary;
+    }
+    return FALLBACK;
+  }
+
+  function t(lang, key){
+    var dict = window.I18N[lang] || {};
+    var fb = window.I18N[FALLBACK] || {};
+    return (key in dict) ? dict[key] : fb[key];
+  }
+
+  function applyLang(lang){
+    if (SUPPORTED.indexOf(lang) === -1) lang = FALLBACK;
+    document.documentElement.setAttribute('lang', lang === 'uk' ? 'uk' : (lang === 'km' ? 'km' : (lang === 'zh' ? 'zh-Hans' : lang)));
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      var val = t(lang, key);
+      if (val != null) el.textContent = val;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      var val = t(lang, key);
+      if (val != null) el.innerHTML = val;
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(function(el){
+      var spec = el.getAttribute('data-i18n-attr').split(':');
+      var attr = spec[0], key = spec[1];
+      var val = t(lang, key);
+      if (val != null) el.setAttribute(attr, val);
+    });
+
+    var title = t(lang, 'meta.title');
+    if (title) document.title = title;
+
+    var pdfFile = t(lang, 'pdf.file') || 'Afinogenov_Resume_EN.pdf';
+    var pdfBtn = document.getElementById('pdfBtn');
+    var pdfBtnFooter = document.getElementById('pdfBtnFooter');
+    if (pdfBtn) pdfBtn.setAttribute('href', pdfFile);
+    if (pdfBtnFooter) pdfBtnFooter.setAttribute('href', pdfFile);
+
+    // Show a note on Experience/Education for languages without a full translation yet
+    var showNote = (lang === 'km' || lang === 'zh');
+    var expNote = document.getElementById('expNote');
+    var eduNote = document.getElementById('eduNote');
+    var noteText = {
+      km: 'ព័ត៌មានលម្អិតនេះបង្ហាញជាភាសាអង់គ្លេស រង់ចាំការបកប្រែពិនិត្យដោយអ្នកនិយាយភាសាកំណើត។',
+      zh: '详细内容目前以英文显示，正在等待母语译者审校。'
+    };
+    if (expNote){ expNote.textContent = noteText[lang] || ''; expNote.classList.toggle('show', showNote); }
+    if (eduNote){ eduNote.textContent = noteText[lang] || ''; eduNote.classList.toggle('show', showNote); }
+
+    document.querySelectorAll('.langbar button').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    var select = document.getElementById('langSelect');
+    if (select) select.value = lang;
+
+    localStorage.setItem('site_lang', lang);
+  }
+
+  document.querySelectorAll('.langbar button').forEach(function(btn){
+    btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang')); });
+  });
+  var select = document.getElementById('langSelect');
+  if (select){
+    select.addEventListener('change', function(){ applyLang(select.value); });
+  }
+
+  applyLang(detectLang());
+})();
+</script>
 
 </body>
 </html>
