@@ -1,1 +1,0 @@
-# iurii-afinogenov.github.io
